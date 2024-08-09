@@ -46,6 +46,10 @@ private slots:
 
     void on_btnSubtract_clicked();
 
+    void on_btnDelete_clicked();
+
+    void on_btnClear_clicked();
+
 private:
     Ui::Cuteulator *ui;
     void update();

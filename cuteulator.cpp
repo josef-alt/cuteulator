@@ -214,3 +214,32 @@ void Cuteulator::on_btnSubtract_clicked()
     update();
 }
 
+// delete one digit/operator
+void Cuteulator::on_btnDelete_clicked()
+{
+    if(term.empty())
+    {
+        if(!expression.empty())
+        {
+            expression.pop_back();
+        }
+    }
+    else
+    {
+        if(!term.empty())
+        {
+            term.pop_back();
+        }
+    }
+
+    update();
+}
+
+// full clear
+void Cuteulator::on_btnClear_clicked()
+{
+    expression.clear();
+    term.clear();
+    update();
+}
+
