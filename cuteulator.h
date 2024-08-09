@@ -38,6 +38,14 @@ private slots:
 
     void on_btn9_clicked();
 
+    void on_btnMultiply_clicked();
+
+    void on_btnDivide_clicked();
+
+    void on_btnAdd_clicked();
+
+    void on_btnSubtract_clicked();
+
 private:
     Ui::Cuteulator *ui;
     void update();

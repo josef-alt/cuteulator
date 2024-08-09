@@ -30,6 +30,16 @@ void Cuteulator::update()
     ui->txtDisplay->setText(exp);
 }
 
+// determine whether terms are operators or operands
+bool is_operator(std::string str)
+{
+    if("+" == str)  return true;
+    if("-" == str)  return true;
+    if("/" == str)  return true;
+    if("*" == str)  return true;
+    return false;
+}
+
 // button listeners
 void Cuteulator::on_btn0_clicked()
 {
@@ -90,3 +100,117 @@ void Cuteulator::on_btn9_clicked()
     term += "9";
     update();
 }
+
+void Cuteulator::on_btnMultiply_clicked()
+{
+    // push and clear for next term
+    if(!term.empty())
+    {
+        expression.push_back(term);
+        term.clear();
+    }
+
+    // can't start with m/d
+    if(expression.empty())
+    {
+        return;
+    }
+
+    // can't do operations back to back
+    if(!expression.empty())
+    {
+        if(is_operator(expression.back()))
+        {
+            expression.pop_back();
+        }
+    }
+
+    expression.push_back("*");
+    update();
+}
+
+void Cuteulator::on_btnDivide_clicked()
+{
+    // push and clear for next term
+    if(!term.empty())
+    {
+        expression.push_back(term);
+        term.clear();
+    }
+
+    // can't start with m/d
+    if(expression.empty())
+    {
+        return;
+    }
+
+    // can't do operations back to back
+    if(!expression.empty())
+    {
+        if(is_operator(expression.back()))
+        {
+            expression.pop_back();
+        }
+    }
+
+    expression.push_back("/");
+    update();
+}
+
+void Cuteulator::on_btnAdd_clicked()
+{
+    // push and clear for next term
+    if(!term.empty())
+    {
+        expression.push_back(term);
+        term.clear();
+    }
+
+    // can't start with m/d
+    if(expression.empty())
+    {
+        return;
+    }
+
+    // can't do operations back to back
+    if(!expression.empty())
+    {
+        if(is_operator(expression.back()))
+        {
+            expression.pop_back();
+        }
+    }
+
+    expression.push_back("+");
+    update();
+}
+
+void Cuteulator::on_btnSubtract_clicked()
+{
+    // push and clear for next term
+    if(!term.empty())
+    {
+        expression.push_back(term);
+        term.clear();
+    }
+
+    // can't start with m/d
+    // TODO allow subtracting negatives
+    if(expression.empty())
+    {
+        return;
+    }
+
+    // can't do operations back to back
+    if(!expression.empty())
+    {
+        if(is_operator(expression.back()))
+        {
+            expression.pop_back();
+        }
+    }
+
+    expression.push_back("-");
+    update();
+}
+
