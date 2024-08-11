@@ -101,6 +101,42 @@ void Cuteulator::on_btn9_clicked()
     update();
 }
 
+void Cuteulator::on_btnDecimal_clicked()
+{
+    // if the term is empty we need to determine whether to start a new term or append to a previous one
+    if(term.empty())
+    {
+        std::string prev = expression.back();
+        if(is_operator(prev))
+        {
+            term += ".";
+            update();
+            return;
+        }
+        else
+        {
+            term = prev;
+            expression.pop_back();
+        }
+    }
+
+    // if we are appending to an existing term there cannot be another decimal
+    bool has_decimal = false;
+    for(char c : term)
+    {
+        if(c == '.')
+        {
+            has_decimal = true;
+        }
+    }
+    if(!has_decimal)
+    {
+        term += ".";
+    }
+
+    update();
+}
+
 void Cuteulator::on_btnMultiply_clicked()
 {
     // push and clear for next term
