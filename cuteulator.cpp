@@ -221,7 +221,12 @@ void Cuteulator::on_btnDelete_clicked()
     {
         if(!expression.empty())
         {
+            std::string prev = expression.back();
             expression.pop_back();
+
+            // only delete the last character of the term
+            prev.pop_back();
+            term = prev;
         }
     }
     else
