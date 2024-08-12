@@ -10,10 +10,12 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    cuteulator.cpp
+    cuteulator.cpp \
+    solver.cpp
 
 HEADERS += \
-    cuteulator.h
+    cuteulator.h \
+    solver.h
 
 FORMS += \
     cuteulator.ui
