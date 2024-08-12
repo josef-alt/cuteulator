@@ -2,6 +2,7 @@
 #include "ui_cuteulator.h"
 #include <string>
 #include <vector>
+#include "solver.h"
 
 Cuteulator::Cuteulator(QWidget *parent)
     : QMainWindow(parent)
@@ -282,5 +283,38 @@ void Cuteulator::on_btnClear_clicked()
     expression.clear();
     term.clear();
     update();
+}
+
+// solve equation
+// TODO trim decimal
+// TODO handling next input
+//      operator -> use result in next expression (done)
+//      operand  -> replace result with new input
+void Cuteulator::on_btnEquals_clicked()
+{
+    // make sure to include the last operand
+    if(!term.empty())
+    {
+        expression.push_back(term);
+        term.clear();
+    }
+
+    try
+    {
+        long double result = solve(expression);
+        expression.clear();
+        term.clear();
+
+        term = std::to_string(result);
+        update();
+    }
+    // TODO div 0
+    catch(const std::out_of_range& except)
+    {
+        expression.clear();
+        term.clear();
+
+        ui->txtDisplay->setText("OVERFLOW");
+    }
 }
 

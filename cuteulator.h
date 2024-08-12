@@ -52,6 +52,8 @@ private slots:
 
     void on_btnDecimal_clicked();
 
+    void on_btnEquals_clicked();
+
 private:
     Ui::Cuteulator *ui;
     void update();
