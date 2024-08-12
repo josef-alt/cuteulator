@@ -14,7 +14,7 @@
    <string>Cuteulator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -258,7 +258,7 @@
         <string>0</string>
        </property>
        <property name="shortcut">
-        <string/>
+        <string>0</string>
        </property>
       </widget>
      </item>
