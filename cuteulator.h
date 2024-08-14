@@ -54,6 +54,12 @@ private slots:
 
     void on_btnEquals_clicked();
 
+    void on_btnParenOpen_clicked();
+
+    void on_btnParenClose_clicked();
+
+    void on_btnExponent_clicked();
+
 private:
     Ui::Cuteulator *ui;
     void update();

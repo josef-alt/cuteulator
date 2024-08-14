@@ -138,6 +138,83 @@ void Cuteulator::on_btnDecimal_clicked()
     update();
 }
 
+void Cuteulator::on_btnParenOpen_clicked()
+{
+    // push and clear for next term
+    if(!term.empty())
+    {
+        expression.push_back(term);
+        term.clear();
+    }
+
+    // currently not supporting implied multiplication
+    if(!expression.empty())
+    {
+        if(!is_operator(expression.back()))
+        {
+            return;
+        }
+    }
+
+    expression.push_back("(");
+    update();
+}
+
+void Cuteulator::on_btnParenClose_clicked()
+{
+    // push and clear for next term
+    if(!term.empty())
+    {
+        expression.push_back(term);
+        term.clear();
+    }
+
+    // can't start with closing parenthesis
+    // currently not going to force valid parentheses beyond that
+    if(expression.empty())
+    {
+        return;
+    }
+    else
+    {
+        if(is_operator(expression.back()))
+        {
+            return;
+        }
+    }
+
+    expression.push_back(")");
+    update();
+}
+
+void Cuteulator::on_btnExponent_clicked()
+{
+    // push and clear for next term
+    if(!term.empty())
+    {
+        expression.push_back(term);
+        term.clear();
+    }
+
+    // can't start with operator
+    if(expression.empty())
+    {
+        return;
+    }
+
+    // can't do operations back to back
+    if(!expression.empty())
+    {
+        if(is_operator(expression.back()))
+        {
+            expression.pop_back();
+        }
+    }
+
+    expression.push_back("^");
+    update();
+}
+
 void Cuteulator::on_btnMultiply_clicked()
 {
     // push and clear for next term
