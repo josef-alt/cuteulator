@@ -94,15 +94,15 @@ long double solve(std::vector<std::string> expression)
                 long double res = evaluate(term1, operators.top(), term2);
 
                 operators.pop();
-                operators.pop();
 
                 values.push(res);
             }
+            operators.pop();
         }
         // add sub mult div
         else if(precedence > 3 && precedence < 8)
         {
-            while(!operators.empty() && operators.top() / 2 <= precedence / 2)
+            while(!operators.empty() && operators.top() != 2 && operators.top() / 2 <= precedence / 2)
             {
                 long double term1 = values.top();
                 values.pop();
