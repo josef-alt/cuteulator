@@ -87,9 +87,9 @@ long double solve(std::vector<std::string> expression)
         {
             while(!operators.empty() && operators.top() != 2)
             {
-                long double term1 = values.top();
-                values.pop();
                 long double term2 = values.top();
+                values.pop();
+                long double term1 = values.top();
                 values.pop();
                 long double res = evaluate(term1, operators.top(), term2);
 
@@ -104,9 +104,9 @@ long double solve(std::vector<std::string> expression)
         {
             while(!operators.empty() && operators.top() != 2 && operators.top() / 2 <= precedence / 2)
             {
-                long double term1 = values.top();
-                values.pop();
                 long double term2 = values.top();
+                values.pop();
+                long double term1 = values.top();
                 values.pop();
 
                 long double res = evaluate(term1, operators.top(), term2);
@@ -121,9 +121,9 @@ long double solve(std::vector<std::string> expression)
     // handle all left over operations
     while(!operators.empty())
     {
-        long double term1 = values.top();
-        values.pop();
         long double term2 = values.top();
+        values.pop();
+        long double term1 = values.top();
         values.pop();
         long double res = evaluate(term1, operators.top(), term2);
         operators.pop();
