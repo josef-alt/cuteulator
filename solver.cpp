@@ -2,6 +2,7 @@
 #include<string>
 #include<stack>
 #include<stdexcept>
+#include<math.h>
 
 const long double PI = 3.14159265L;
 const long double E  = 2.71828182L;
@@ -47,6 +48,7 @@ long double evaluate(long double term1, int op, long double term2)
     switch(op)
     {
     case 4:
+        return powl(term1, term2);
     case 6:
         return term1 * term2;
     case 7:
