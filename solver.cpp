@@ -3,6 +3,9 @@
 #include<stack>
 #include<stdexcept>
 
+const long double PI = 3.14159265L;
+const long double E  = 2.71828182L;
+
 int priority(std::string term)
 {
     if(term == "(")
@@ -65,7 +68,18 @@ long double solve(std::vector<std::string> expression)
         {
             try
             {
-                values.push(stold(term));
+                if(term == "π")
+                {
+                    values.push(PI);
+                }
+                else if(term == "e")
+                {
+                    values.push(E);
+                }
+                else
+                {
+                    values.push(stold(term));
+                }
             }
             catch(const std::invalid_argument& ex)
             {
