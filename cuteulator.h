@@ -60,6 +60,10 @@ private slots:
 
     void on_btnExponent_clicked();
 
+    void on_btnPI_clicked();
+
+    void on_btnE_clicked();
+
 private:
     Ui::Cuteulator *ui;
     void update();

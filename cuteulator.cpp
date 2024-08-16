@@ -102,6 +102,18 @@ void Cuteulator::on_btn9_clicked()
     update();
 }
 
+void Cuteulator::on_btnPI_clicked()
+{
+    term += "π";
+    update();
+}
+
+void Cuteulator::on_btnE_clicked()
+{
+    term += "e";
+    update();
+}
+
 void Cuteulator::on_btnDecimal_clicked()
 {
     // if the term is empty we need to determine whether to start a new term or append to a previous one
