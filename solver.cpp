@@ -16,21 +16,25 @@ int priority(std::string term)
     {
         return 3;
     }
-    else if(term == "*")
+    else if(term == "^")
     {
         return 4;
     }
-    else if(term == "/")
-    {
-        return 5;
-    }
-    else if(term == "+")
+    else if(term == "*")
     {
         return 6;
     }
-    else if(term == "-")
+    else if(term == "/")
     {
         return 7;
+    }
+    else if(term == "+")
+    {
+        return 8;
+    }
+    else if(term == "-")
+    {
+        return 9;
     }
     else
     {
@@ -43,12 +47,13 @@ long double evaluate(long double term1, int op, long double term2)
     switch(op)
     {
     case 4:
-        return term1 * term2;
-    case 5:
-        return term1 / term2;
     case 6:
-        return term1 + term2;
+        return term1 * term2;
     case 7:
+        return term1 / term2;
+    case 8:
+        return term1 + term2;
+    case 9:
         return term1 - term2;
     }
 }
@@ -113,8 +118,8 @@ long double solve(std::vector<std::string> expression)
             }
             operators.pop();
         }
-        // add sub mult div
-        else if(precedence > 3 && precedence < 8)
+        // add sub mult div ex
+        else if(precedence > 3 && precedence < 10)
         {
             while(!operators.empty() && operators.top() != 2 && operators.top() / 2 <= precedence / 2)
             {
